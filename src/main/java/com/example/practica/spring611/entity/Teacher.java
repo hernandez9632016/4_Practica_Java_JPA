@@ -1,11 +1,15 @@
 package com.example.practica.spring611.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "Profesores")
 public class Teacher {
@@ -19,7 +23,20 @@ public class Teacher {
     private Integer id;
     private String nombre;
     private String direccion;
-    private int edad;
+    private Integer edad;
+
+
+    public Teacher(List<Curso> cursoList, Integer id, String nombre, String direccion, Integer edad) {
+        this.cursoList = cursoList;
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.edad = edad;
+    }
+
+    public Teacher() {
+
+    }
 
     public List<Curso> getCursoList() {
         return cursoList;
@@ -53,11 +70,11 @@ public class Teacher {
         this.direccion = direccion;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 }

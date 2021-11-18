@@ -1,9 +1,7 @@
 package com.example.practica.spring611.controller;
-import com.example.practica.spring611.entity.Student;
+
 import com.example.practica.spring611.entity.Teacher;
-import com.example.practica.spring611.repository.TeacherRepository;
-import com.example.practica.spring611.repository.TeacherRepositoryDao;
-import com.example.practica.spring611.service.StudentService;
+import com.example.practica.spring611.entity.Teacher2;
 import com.example.practica.spring611.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,6 @@ public class TeacherController {
     private TeacherService serviceteacher;
 
 
-
     //Creacion del maestro
     @PostMapping("/agregarteacher")
     public ResponseEntity<Teacher> addTeacher(@RequestBody Teacher teacher) {
@@ -33,6 +30,18 @@ public class TeacherController {
     public Teacher getTeacherByName(@PathVariable("nombrevariable") String nombre) {
         return serviceteacher.getTeacher(nombre);
     }
+
+    @GetMapping("/teacher2/{edad}")
+    public List<Teacher2> getTeacherByName2(@PathVariable("edad") Integer id) {
+        return serviceteacher.getTeacher2(id);
+    }
+
+    @GetMapping("/teacher3/{edad}")
+    public List<String> getTeacherByName3(@PathVariable("edad") Integer id) {
+
+        return serviceteacher.getTeacher3(id);
+    }
+
+
 }
 
-/***************************************************************************************/
