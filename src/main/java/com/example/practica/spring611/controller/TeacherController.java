@@ -32,16 +32,19 @@ public class TeacherController {
     }
 
     @GetMapping("/teacher2/{edad}")
-    public List<Teacher2> getTeacherByName2(@PathVariable("edad") Integer id) {
-        return serviceteacher.getTeacher2(id);
+    public List<Teacher2> getTeacherByName2(@PathVariable("edad") Integer edad) {
+        return serviceteacher.getTeacher2(edad);
     }
 
     @GetMapping("/teacher3/{edad}")
-    public List<String> getTeacherByName3(@PathVariable("edad") Integer id) {
-
-        return serviceteacher.getTeacher3(id);
+    public List<String> getTeacherByName3(@PathVariable("edad") Integer edad) {
+        return serviceteacher.getTeacher3(edad);
     }
 
+    @GetMapping("/teacherpornombrecurso/{nombre}")
+    public List<Teacher> getTeacherByName3(@PathVariable("nombre") String nombre) {
+        return serviceteacher.findTeacherByNombreJoinCurso(nombre);
+    }
 
 }
 

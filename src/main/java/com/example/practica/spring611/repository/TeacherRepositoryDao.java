@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public interface TeacherRepositoryDao extends CrudRepository<Teacher, Integer> {
     public List<Teacher> findTeacherByNombreAndAndEdad(String name, Integer edad);
 
@@ -22,4 +24,7 @@ public interface TeacherRepositoryDao extends CrudRepository<Teacher, Integer> {
 
     @Query(value = "Select new com.example.practica.spring611.entity.Teacher2(t.nombre, t.direccion) from Teacher t where t.edad=:edad")
     public List<Teacher2> findTeacherByNombreAndAndEdadPorJPQueryN3(Integer edad);
+
+    @Query(value = "Select t from Teacher t join t.cursoList c where c.nombre=:nombre")
+    public List<Teacher> findTeacherByNombreJoinCurso(String nombre);
 }

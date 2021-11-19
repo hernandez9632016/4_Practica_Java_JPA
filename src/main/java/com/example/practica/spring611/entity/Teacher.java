@@ -1,8 +1,6 @@
 package com.example.practica.spring611.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 @Table(name = "Profesores")
 public class Teacher {
 
-    @ElementCollection
+    @OneToMany(cascade = {CascadeType.ALL})
     @Column(name = "curso")
     private List<Curso> cursoList;
 
@@ -29,6 +27,13 @@ public class Teacher {
     public Teacher(List<Curso> cursoList, Integer id, String nombre, String direccion, Integer edad) {
         this.cursoList = cursoList;
         this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.edad = edad;
+    }
+
+    public Teacher(List<Curso> cursoList, String nombre, String direccion, Integer edad) {
+        this.cursoList = cursoList;
         this.nombre = nombre;
         this.direccion = direccion;
         this.edad = edad;

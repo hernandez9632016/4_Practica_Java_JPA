@@ -38,12 +38,17 @@ public class TeacherService {
         return null;
     }
 
-    public List<Teacher2> getTeacher2(Integer id) {
-        return teacherRepositoryDao.findTeacherByNombreAndAndEdadPorJPQueryN3(id);
+    public List<Teacher2> getTeacher2(Integer edad) {
+        return teacherRepositoryDao.findTeacherByNombreAndAndEdadPorJPQueryN3(edad);
     }
 
-    public List<String> getTeacher3(Integer id) {
-        return teacherRepositoryDao.findTeacherByNombreAndAndEdadPorJPQueryN2(id);
+    public List<String> getTeacher3(Integer edad) {
+        return teacherRepositoryDao.findTeacherByNombreAndAndEdadPorJPQueryN2(edad);
+    }
+
+
+    public List<Teacher> findTeacherByNombreJoinCurso(String nombre) {
+        return teacherRepositoryDao.findTeacherByNombreJoinCurso(nombre);
     }
 
 
